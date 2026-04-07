@@ -1,50 +1,73 @@
-// src/App.jsx
-import React from 'react';
-import { activities } from './ActivitiesData'; // 引入剛才建立的檔案
+export const activities = [
+  { 
+    id: 1, 
+    date: "4/24(五)", 
+    theme: "破冰交流：SEL經驗分享", 
+    speaker: "黃如昕", 
+    host: "社群召集人", 
+    desc: "由召集人帶領夥伴分享參與羽球雙打比賽之經驗與心得，覺察合作歷程中的溝通方式、角色分工與情緒變化。"
+  },
+  { 
+    id: 2, 
+    date: "5/4(一) 16:00-17:30", 
+    theme: "桌球實作I：壓力釋放與專注練習", 
+    speaker: "林子鈞教練", 
+    host: "城市桌球", 
+    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，引導教師覺察運動歷程中的專注狀態與情緒變化。"
+  },
+  { 
+    id: 3, 
+    date: "5/20(三) 12:20-14:00", 
+    theme: "SEL於學校行政與導師之運用", 
+    speaker: "劉士毅主任", 
+    host: "青年國中", 
+    desc: "介紹社會情緒學習的核心概念與五大能力，引導教師檢視自身在教學現場中的情緒經驗與壓力來源。"
+  },
+  { 
+    id: 4, 
+    date: "6/15(一) 16:30-18:00", 
+    theme: "桌球實作II：桌球與情緒調節體驗", 
+    speaker: "林子鈞教練", 
+    host: "城市桌球", 
+    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，連結SEL中的自我管理能力。"
+  },
+  { 
+    id: 5, 
+    date: "9-12月(待定)", 
+    theme: "SEL 讀書會：自我照顧策略", 
+    speaker: "黃如昕", 
+    host: "社群召集人", 
+    desc: "分享 SEL 相關書籍心得，透過共讀與交流，協助教師建立日常可運用的自我照顧策略。",
+    isPending: true
+  },
+  { 
+    id: 6, 
+    date: "9-12月(待定)", 
+    theme: "羽球實作 I：身心放鬆與體能調適", 
+    speaker: "蔡宗凌主任", 
+    host: "高餐大附中", 
+    desc: "透過運動促進身心放鬆與壓力調適，引導教師分享身體感受與情緒變化。",
+    isPending: true
+  },
+  { 
+    id: 7, 
+    date: "9-12月(待定)", 
+    theme: "羽球實作 II：團隊互動與支持關係建立", 
+    speaker: "社群成員", 
+    host: "社群自由練習", 
+    desc: "透過分組合作與互動練習，體驗團隊合作與互相支持的歷程，強化關係建立能力。",
+    isPending: true
+  },
+  { 
+    id: 8, 
+    date: "9-12月(待定)", 
+    theme: "SEL 共學交流與成果發表", 
+    speaker: "黃如昕", 
+    host: "社群召集人", 
+    desc: "呈現成員在合作互動、專注投入與情緒調節之學習歷程，深化社會情緒學習成效。",
+    isPending: true
+  }
+];
+// ...（前方的程式碼內容）
 
-function App() {
-  return (
-    <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ textAlign: 'center', color: '#2c3e50' }}>
-        SEL運動共學社群實踐紀錄 [cite: 4]
-      </h1>
-      <p style={{ textAlign: 'center', color: '#7f8c8d' }}>
-        實施期程：115年3月9日起至115年12月31日止 [cite: 3]
-      </p>
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '30px' }}>
-        {/* 使用 map 迴圈產出每一場活動 */}
-        {activities.map((item) => (
-          <div key={item.id} style={cardStyle}>
-            <div style={tagStyle}>{item.date}</div>
-            <h3 style={{ margin: '15px 0' }}>{item.theme}</h3>
-            <p><strong>主講人：</strong>{item.speaker} ({item.host})</p>
-            <p style={{ color: '#555', fontSize: '0.9rem', lineHeight: '1.6' }}>
-              {item.desc}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// 簡單的內聯樣式
-const cardStyle = {
-  border: '1px solid #ddd',
-  borderRadius: '8px',
-  padding: '20px',
-  backgroundColor: '#fff',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-};
-
-const tagStyle = {
-  display: 'inline-block',
-  backgroundColor: '#3498db',
-  color: '#fff',
-  padding: '2px 8px',
-  borderRadius: '4px',
-  fontSize: '0.8rem'
-};
-
-export default App;
+export default App; // 關鍵：確保有這一行
