@@ -1,5 +1,3 @@
-// src/ActivitiesData.js
-
 export const activities = [
   { 
     id: 1, 
@@ -7,7 +5,19 @@ export const activities = [
     theme: "破冰交流：SEL經驗分享", 
     speaker: "黃如昕", 
     host: "社群召集人", 
-    desc: "由召集人帶領夥伴分享參與羽球雙打比賽之經驗與心得，覺察合作歷程中的溝通方式、角色分工與情緒變化。" // 
+    desc: "由召集人帶領夥伴分享參與羽球雙打比賽之經驗與心得，覺察合作歷程中的溝通方式、角色分工與情緒變化。",
+    record: "【活動紀錄與反思】\n今日透過羽球雙打的互動，成員們深刻體會到「神隊友」與「豬隊友」的標籤如何影響場上的情緒。這不僅是體能的舒展，更是一次完美的 SEL 自我覺察練習。",
+    
+    // 將 imageUrl 改成 imageUrls，並使用陣列 [] 存放多張照片
+    imageUrls: [
+      "./images/424-photo1.jpg",
+      "./images/424-photo2.jpg",
+      "./images/424-photo3.jpg",
+      "./images/424-photo4.jpg",
+      "./images/424-photo5.jpg"
+      // 可以繼續往下加，記得每一行結尾要有逗號
+    ],
+    videoUrl: "https://www.youtube.com/embed/60a2dwcg-yA"
   },
   { 
     id: 2, 
@@ -15,7 +25,7 @@ export const activities = [
     theme: "桌球實作I：壓力釋放與專注練習", 
     speaker: "林子鈞教練", 
     host: "城市桌球", 
-    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，引導教師覺察運動歷程中的專注狀態與情緒變化。" // 
+    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，引導教師覺察運動歷程中的專注狀態與情緒變化。"
   },
   { 
     id: 3, 
@@ -23,7 +33,7 @@ export const activities = [
     theme: "SEL於學校行政與導師之運用", 
     speaker: "劉士毅主任", 
     host: "青年國中", 
-    desc: "介紹社會情緒學習（SEL）的核心概念與五大能力，協助教師建立情緒覺察與自我理解的基礎。" // 
+    desc: "介紹社會情緒學習的核心概念與五大能力，引導教師檢視自身在教學現場中的情緒經驗與壓力來源。"
   },
   { 
     id: 4, 
@@ -31,16 +41,16 @@ export const activities = [
     theme: "桌球實作II：桌球與情緒調節體驗", 
     speaker: "林子鈞教練", 
     host: "城市桌球", 
-    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，連結SEL中的自我管理能力。" // 
-  }
+    desc: "透過運動過程體驗身心放鬆與壓力釋放效果，連結SEL中的自我管理能力。"
+  }, // <-- 就是這裡之前少了一個逗號
   { 
     id: 5, 
     date: "9-12月(待定)", 
     theme: "SEL 讀書會：自我照顧策略", 
     speaker: "黃如昕", 
     host: "社群召集人", 
-    desc: "分享 SEL 相關書籍心得，透過共讀與交流，協助教師建立日常可運用的自我照顧策略 [cite: 26]。",
-    isPending: true // 增加一個標記，方便在 UI 上顯示「規劃中」
+    desc: "分享 SEL 相關書籍心得，透過共讀與交流，協助教師建立日常可運用的自我照顧策略。",
+    isPending: true
   },
   { 
     id: 6, 
@@ -48,7 +58,7 @@ export const activities = [
     theme: "羽球實作 I：身心放鬆與體能調適", 
     speaker: "蔡宗凌主任", 
     host: "高餐大附中", 
-    desc: "透過羽球活動促進身心放鬆與壓力調適，引導教師分享身體感受與情緒變化 [cite: 26]。",
+    desc: "透過運動促進身心放鬆與壓力調適，引導教師分享身體感受與情緒變化。",
     isPending: true
   },
   { 
@@ -57,7 +67,7 @@ export const activities = [
     theme: "羽球實作 II：團隊互動與支持關係建立", 
     speaker: "社群成員", 
     host: "社群自由練習", 
-    desc: "透過分組合作與互動練習，體驗團隊合作與互相支持的歷程，強化關係建立能力 [cite: 26]。",
+    desc: "透過分組合作與互動練習，體驗團隊合作與互相支持的歷程，強化關係建立能力。",
     isPending: true
   },
   { 
@@ -66,8 +76,7 @@ export const activities = [
     theme: "SEL 共學交流與成果發表", 
     speaker: "黃如昕", 
     host: "社群召集人", 
-    desc: "綜合呈現成員在合作互動、專注投入與情緒調節之學習歷程，深化 SEL 核心能力 [cite: 26]。",
+    desc: "呈現成員在合作互動、專注投入與情緒調節之學習歷程，深化社會情緒學習成效。",
     isPending: true
   }
-  // 後續場次可依此類推增加... 
 ];

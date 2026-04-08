@@ -1,9 +1,10 @@
-import React from 'react';
-import { activities } from './ActivitiesData'; // 確保從這裡引入您的活動資料
+import React, { useState } from 'react';
+import { activities } from './ActivitiesData';
 
 // 活動卡片組件
 const ActivityCard = ({ item }) => {
   const isPending = item.isPending;
+  const [isExpanded, setIsExpanded] = useState(false); // 控制紀錄是否展開
 
   const cardStyle = {
     border: isPending ? '2px dashed #bdc3c7' : '1px solid #e0e0e0',
@@ -35,28 +36,88 @@ const ActivityCard = ({ item }) => {
       <div style={{ fontSize: '0.9rem', color: '#7f8c8d' }}>
         <strong>主講/主持：</strong> {item.speaker} {item.host ? `(${item.host})` : ''}
       </div>
-      <p style={{ 
-        margin: 0, 
-        fontSize: '0.95rem', 
-        lineHeight: '1.6', 
-        color: '#34495e',
-        flexGrow: 1 
-      }}>
+      <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.6', color: '#34495e', flexGrow: 1 }}>
         {item.desc}
       </p>
-      {!isPending && (
-        <button style={{
-          alignSelf: 'flex-start',
-          padding: '6px 16px',
-          backgroundColor: '#fff',
-          border: '1px solid #3498db',
-          color: '#3498db',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '0.85rem'
-        }}>
-          查看活動紀錄
-        </button>
+
+      {/* 如果不是規劃中的活動，且有紀錄資料，才顯示按鈕 */}
+      {!isPending && item.record && (
+        <>
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            style={{
+              alignSelf: 'flex-start',
+              padding: '6px 16px',
+              backgroundColor: isExpanded ? '#3498db' : '#fff',
+              border: '1px solid #3498db',
+              color: isExpanded ? '#fff' : '#3498db',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '0.85rem',
+              transition: 'all 0.3s'
+            }}
+          >
+            {isExpanded ? '收起活動紀錄' : '查看活動紀錄'}
+          </button>
+          
+          {/* 展開後的內容區塊（包含文字、照片牆、影片） */}
+          {isExpanded && (
+            <div style={{
+              marginTop: '10px',
+              padding: '15px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '8px',
+              borderLeft: '4px solid #3498db',
+              fontSize: '0.9rem',
+              color: '#2c3e50',
+              lineHeight: '1.6',
+            }}>
+              {/* 1. 文字紀錄 */}
+              <div style={{ marginBottom: '15px', whiteSpace: 'pre-line' }}>
+                {item.record}
+              </div>
+              
+              {/* 2. 多張照片牆 (CSS Grid 響應式排版) */}
+              {item.imageUrls && item.imageUrls.length > 0 && (
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', 
+                  gap: '10px', 
+                  marginBottom: '15px' 
+                }}>
+                  {item.imageUrls.map((url, index) => (
+                    <img 
+                      key={index}
+                      src={url} 
+                      alt={`${item.theme} 照片 ${index + 1}`} 
+                      style={{ 
+                        width: '100%', 
+                        height: '150px', 
+                        objectFit: 'cover', 
+                        borderRadius: '8px', 
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+                      }} 
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* 3. YouTube 影片嵌入 (16:9 完美比例) */}
+              {item.videoUrl && (
+                <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px' }}>
+                  <iframe 
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    src={item.videoUrl} 
+                    title={`${item.theme} 活動影片`}
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
@@ -144,5 +205,4 @@ function App() {
   );
 }
 
-// 關鍵：將 App 匯出，這樣 main.jsx 才找得到！
 export default App;
